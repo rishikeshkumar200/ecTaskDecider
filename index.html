@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Daily Startup Task</title>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <style>
+    body {
+      background: #f8f9fa;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 600px;
+      margin-top: 50px;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #343a40;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>📊 Daily Startup Task</h2>
+  <form id="taskForm">
+    
+    <div class="mb-3">
+      <label class="form-label">1. Has any important Jharkhand exam notification/news dropped today?</label>
+      <select class="form-select" id="jharkhandNotif">
+        <option value="No" selected>No</option>
+        <option value="Yes">Yes</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">2. Is Exam Cluster last video more than 3 days ago?</label>
+      <select class="form-select" id="mainUploaded">
+        <option value="No" selected>No</option>
+        <option value="Yes">Yes</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">3. Is Jharkhand channel last video more than 6 days ago?</label>
+      <select class="form-select" id="jharkhandAlive">
+        <option value="No" selected>No</option>
+        <option value="Yes">Yes</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">4. Is Ancient history section finished in course?</label>
+      <select class="form-select" id="ancientDone">
+        <option value="No" selected>No</option>
+        <option value="Yes">Yes</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">5. Is Ancient history complete OR do you have a free 6–8 hr stretch today?</label>
+      <select class="form-select" id="proChannel">
+        <option value="No" selected>No</option>
+        <option value="Yes">Yes</option>
+      </select>
+    </div>
+
+    <div class="d-grid">
+      <button type="button" class="btn btn-primary btn-lg" onclick="decideTask()">Get Today’s Task</button>
+    </div>
+  </form>
+
+  <div id="result" class="alert alert-success text-center mt-4" style="display:none;"></div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+function decideTask() {
+  let jharkhandNotif = document.getElementById("jharkhandNotif").value;
+  let mainUploaded = document.getElementById("mainUploaded").value;
+  let jharkhandAlive = document.getElementById("jharkhandAlive").value;
+  let ancientDone = document.getElementById("ancientDone").value;
+  let proChannel = document.getElementById("proChannel").value;
+
+  let result = "";
+
+  if (jharkhandNotif === "Yes") {
+    result = "✅ Today’s Task: Make a Jharkhand video.";
+  } else if (mainUploaded === "Yes") {
+    result = "✅ Today’s Task: Make a Main Channel video.";
+  } else if (jharkhandAlive === "Yes") {
+    result = "✅ Today’s Task: Upload a Jharkhand channel video.";
+  } else if (ancientDone === "No") {
+    result = "✅ Today’s Task: Work on Ancient History section for GK course.";
+  } else if (proChannel === "Yes") {
+    result = "✅ Today’s Task: Work on Pro Channel (One-shot GK video).";
+  } else {
+    result = "✅ Today’s Task: Continue GK Course (default priority).";
+  }
+
+  let resultDiv = document.getElementById("result");
+  resultDiv.style.display = "block";
+  resultDiv.innerHTML = result;
+}
+</script>
+
+</body>
+</html>
